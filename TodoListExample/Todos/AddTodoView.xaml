@@ -18,7 +18,8 @@
         <TextBox Grid.Column="0"
                  Text="{Binding TodoHeader, UpdateSourceTrigger=PropertyChanged}"
                  HorizontalAlignment="Stretch"
-                 Margin="0 0 4 0">
+                 Margin="0 0 4 0"
+                 materialDesign:HintAssist.Hint="Create new todo!">
           <TextBox.InputBindings>
             <KeyBinding Key="Enter" Command="{Binding SubmitCommand}" />
           </TextBox.InputBindings>

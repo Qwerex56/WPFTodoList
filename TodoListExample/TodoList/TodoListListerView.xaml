@@ -30,30 +30,34 @@
             </Button>
 
             <ListBox Grid.Row="1"
-                     ItemsSource="{Binding TodoLists}">
+                     ItemsSource="{Binding TodoLists}"
+                     materialDesign:ListBoxItemAssist.ShowSelection="False">
               <ListBox.ItemTemplate>
                 <DataTemplate>
-                  <Grid HorizontalAlignment="Stretch"
-                        Width="200">
-                    <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="*" />
-                      <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0"
-                            Content="{Binding Title}"
-                            Style="{StaticResource MaterialDesignFlatLightButton}"
-                            Command="{Binding SelectTodoListCommand}"
-                            HorizontalAlignment="Stretch"
-                            HorizontalContentAlignment="Left" />
-                    <Button Grid.Column="1"
-                            Style="{StaticResource MaterialDesignFlatLightButton}"
-                            Foreground="#ff6c56"
-                            HorizontalAlignment="Right"
-                            Command="{Binding DeleteCommand}">
-                      <materialDesign:PackIcon Kind="Delete" />
-                    </Button>
-                  </Grid>
-
+                  <Border BorderBrush="{StaticResource MaterialDesignLightSeparatorBackground}"
+                          BorderThickness="1"
+                          CornerRadius="4">
+                    <Grid HorizontalAlignment="Stretch"
+                          Width="200">
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                      </Grid.ColumnDefinitions>
+                      <Button Grid.Column="0"
+                              Content="{Binding Title}"
+                              Style="{StaticResource MaterialDesignFlatLightButton}"
+                              Command="{Binding SelectTodoListCommand}"
+                              HorizontalAlignment="Stretch"
+                              HorizontalContentAlignment="Left" />
+                      <Button Grid.Column="1"
+                              Style="{StaticResource MaterialDesignFlatLightButton}"
+                              Foreground="#ff6c56"
+                              HorizontalAlignment="Right"
+                              Command="{Binding DeleteCommand}">
+                        <materialDesign:PackIcon Kind="Delete" />
+                      </Button>
+                    </Grid>
+                  </Border>
                 </DataTemplate>
               </ListBox.ItemTemplate>
             </ListBox>
@@ -74,8 +78,8 @@
                          HorizontalAlignment="Stretch"
                          HorizontalContentAlignment="Stretch"
                          Margin="0 0 4 0"
-                         Text="{Binding CreateTodoListName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                         materialDesign:HintAssist.Hint="Create new todo list!"/>
+                         Text="{Binding CreateTodoListName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         materialDesign:HintAssist.Hint="Create new todo list!" />
                 <Button Grid.Column="1"
                         Style="{StaticResource MaterialDesignOutlinedLightButton}"
                         HorizontalAlignment="Right"

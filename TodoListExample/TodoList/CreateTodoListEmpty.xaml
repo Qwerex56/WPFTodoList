@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="TodoListExample.TodoList.CreateTodoListEmpty"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:TodoListExample.TodoList"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DataContext="{d:DesignInstance Type=local:CreateTodoListEmpty, IsDesignTimeCreatable=False}"
+             mc:Ignorable="d">
+  <StackPanel>
+    <materialDesign:PackIcon Kind="EmoticonSadOutline" 
+                             Width="200"
+                             Height="200"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center" />
+    <TextBlock HorizontalAlignment="Center"
+               Margin="0 0 0 16"
+               FontSize="18"
+               FontWeight="Bold">
+      Wow, Such empty!
+    </TextBlock>
+    <Button Content="Create first todo list!" 
+            HorizontalAlignment="Center"
+            Style="{StaticResource MaterialDesignOutlinedLightButton}"
+            Click="ButtonBase_OnClick"/>
+  </StackPanel>
+</UserControl>
