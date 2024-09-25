@@ -8,7 +8,7 @@ using TodoListExample.Enums;
 namespace TodoListExample.TodoList;
 
 public partial class TodoListItemViewModel : ObservableObject {
-    private int Id { get; }
+    public int Id { get; }
 
     [MaxLength(32)] 
     public string Title { get; set; }
@@ -35,6 +35,15 @@ public partial class TodoListItemViewModel : ObservableObject {
         DbContext.TodoLists.Remove(foundList);
 
         await DbContext.SaveChangesAsync();
+        Messenger.Send(new TodoListUpdates(foundList, UpdateTypeEnum.Update));
+    }
+
+    [RelayCommand]
+    public async Task OnSelectTodoList() {
+        if (await DbContext.TodoLists.FindAsync(Id) is not { } foundList) {
+            return;
+        }
+        
         Messenger.Send(new TodoListUpdates(foundList, UpdateTypeEnum.Update));
     }
 }

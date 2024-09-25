@@ -11,6 +11,7 @@ public partial class TodoListNameChangeView : UserControl {
     private async void TodoListNameChangeView_OnLoaded(object sender, RoutedEventArgs e) {
         if (DataContext is TodoListViewModel viewModel) {
             await viewModel.RefreshCommand.ExecuteAsync(null);
+            TodoListName.Text = viewModel.GetTodoListName();
         }
     }
 }

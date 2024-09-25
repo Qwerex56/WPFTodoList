@@ -14,6 +14,7 @@ public partial class MainWindow {
         ViewTodoView.DataContext = viewTodoViewModel;
         AddTodoView.DataContext = viewTodoViewModel;
         TodoListNameChangeView.DataContext = todoListViewModel;
+        ListerView.DataContext = todoListViewModel;
 
         CommandBindings.Add(new (ApplicationCommands.Close, OnClose));
     }

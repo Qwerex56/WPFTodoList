@@ -50,7 +50,7 @@ public partial class ViewTodoViewModel : ObservableObject, IRecipient<TodoUpdate
         Context = context ?? throw new ArgumentNullException(nameof(context));
         TodoViewModelFactory = todoViewModelFactory;
 
-        _selectedTodoListId = Context.TodoLists.FirstOrDefault()?.Id;
+        // _selectedTodoListId = Context.TodoLists.FirstOrDefault()?.Id;
 
         messenger.RegisterAll(this);
 
@@ -61,6 +61,8 @@ public partial class ViewTodoViewModel : ObservableObject, IRecipient<TodoUpdate
 
     [RelayCommand]
     private async Task OnRefresh() {
+        if (SelectedTodoListId is null) return;
+        
         try {
             Todos.Clear();
 
@@ -111,7 +113,12 @@ public partial class ViewTodoViewModel : ObservableObject, IRecipient<TodoUpdate
     }
 
     public async void Receive(TodoListUpdates messenger) {
-        SelectedTodoListId = Context.TodoLists.LastOrDefault()?.Id;
+        SelectedTodoListId = messenger.UpdateType switch {
+            UpdateTypeEnum.Update or UpdateTypeEnum.Create => messenger.TodoList.Id,
+            UpdateTypeEnum.Delete => Context.TodoLists.LastOrDefault()?.Id,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+
         await RefreshCommand.ExecuteAsync(null);
     }
 }

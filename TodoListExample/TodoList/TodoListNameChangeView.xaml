@@ -9,6 +9,10 @@
              Loaded="TodoListNameChangeView_OnLoaded"
              d:DataContext="{d:DesignInstance Type=local:TodoListViewModel, IsDesignTimeCreatable=False}">
   <materialDesign:Card>
-    <TextBlock />
+    <TextBlock x:Name="TodoListName"
+               HorizontalAlignment="Center"
+               FontSize="24" 
+               Padding="4" 
+               Text="{Binding SelectedTodoListName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
   </materialDesign:Card>
 </UserControl>

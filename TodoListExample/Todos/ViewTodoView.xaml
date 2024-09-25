@@ -13,7 +13,8 @@
     <ScrollViewer Height="250">
       <ListBox ItemsSource="{Binding Todos}"
                HorizontalContentAlignment="Stretch"
-               Padding="12">
+               Padding="12" 
+               Focusable="False">
         <ListBox.ItemTemplate>
           <DataTemplate>
             <Grid HorizontalAlignment="Stretch">

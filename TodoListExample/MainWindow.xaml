@@ -11,37 +11,42 @@
         Style="{StaticResource MaterialDesignWindow}"
         Title="Demo App" Height="450" Width="800"
         ResizeMode="CanMinimize">
-  <Grid HorizontalAlignment="Center"
-        Margin="16">
+  <Grid Margin="16">
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="400"/>
+      <ColumnDefinition Width="Auto"
+                        MaxWidth="250" />
+      <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="Auto" />
-    </Grid.RowDefinitions>
 
-    <!-- <materialDesign:Card Grid.Row="0"  -->
-    <!--                      Margin="0 0 0 8"> -->
-    <!--   <TextBlock HorizontalAlignment="Center" -->
-    <!--              VerticalAlignment="Top" -->
-    <!--              Padding="4" -->
-    <!--              FontSize="32" -->
-    <!--              FontWeight="Bold"> -->
-    <!--     Todo List -->
-    <!--   </TextBlock> -->
-    <!-- </materialDesign:Card> -->
-    
-    <todoList:TodoListNameChangeView Grid.Row="0" 
-                                     x:Name="TodoListNameChangeView"/>
 
-    <todos:AddTodoView Grid.Row="1"
-                       x:Name="AddTodoView"
-                       HorizontalAlignment="Stretch" 
-                       Margin="0 0 0 8"/>
+    <todoList:TodoListListerView Grid.Column="0"
+                                 x:Name="ListerView"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Stretch" />
 
-    <todos:ViewTodoView Grid.Row="2"
-                        x:Name="ViewTodoView" />
+    <Grid Grid.Column="1">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <todoList:TodoListNameChangeView Grid.Row="0"
+                                       x:Name="TodoListNameChangeView"
+                                       HorizontalAlignment="Center"
+                                       Width="500"
+                                       Margin="0 0 0 4" />
+
+      <todos:AddTodoView Grid.Row="1"
+                         x:Name="AddTodoView"
+                         HorizontalAlignment="Center"
+                         Width="400"
+                         Margin="0 0 0 8" />
+
+      <todos:ViewTodoView Grid.Row="2"
+                          x:Name="ViewTodoView"
+                          HorizontalAlignment="Center"
+                          Width="400" />
+    </Grid>
   </Grid>
 </Window>
